@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode",
-    "alexcvzz.vscode-sqlite"
+    "alexcvzz.vscode-sqlite",
+    "humao.rest-client"
   ]
 }
