@@ -17,7 +17,7 @@ GET http://localhost:3000/users/3
 
 
 ### Update a user
-PATCH http://localhost:3000/users/1
+PATCH http://localhost:3000/users/3
 content-type: application/json
 
 {

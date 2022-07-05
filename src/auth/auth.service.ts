@@ -10,7 +10,7 @@ const scrypt = promisify(_scrypt);
 export class AuthService {
   constructor(private usersService: UsersService) {}
 
-  async signup(email: string, password: string) {
+  async signUp(email: string, password: string) {
     const users = await this.usersService.find(email);
     if (users.length) throw new BadRequestException('email in use');
 
@@ -22,19 +22,20 @@ export class AuthService {
     return user;
   }
 
-  async signin(email: string, password: string) {
-    console.log('======> signin');
-
+  async signIn(email: string, password: string) {
     const [user] = await this.usersService.find(email);
-    console.log('======> email', email);
-
     if (!user) throw new NotFoundException('user not found');
-    console.log('======> user', user);
 
     const [salt, storedHash] = user.password.split('.');
     const hash = (await scrypt(password, salt, 32)) as Buffer;
 
     if (storedHash !== hash.toString('hex')) throw new BadRequestException('bad password');
+    return user;
+  }
+
+  async whoAmI(id: number) {
+    const user = await this.usersService.findOne(id);
+    if (!user) throw new NotFoundException('User not found');
     return user;
   }
 }

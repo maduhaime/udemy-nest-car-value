@@ -15,3 +15,10 @@ content-type: application/json
     "email": "test01@exemple.com",
     "password": "password123!"
 }
+
+### Signout a user
+GET http://localhost:3000/auth/signout
+
+### Current user
+GET http://localhost:3000/auth/whoami
+
