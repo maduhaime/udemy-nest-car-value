@@ -1,15 +1,20 @@
 import { Body, Controller, Post, Get, Patch, Delete, Param, Query } from '@nestjs/common';
+
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 
-@Controller('auth')
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { UserDto } from './dtos/user.dto';
+
+@Controller('users')
+@Serialize(UserDto)
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-  @Post('/signup')
+  @Post('')
   createUser(@Body() body: CreateUserDto) {
-    this.userService.create(body.email, body.password);
+    return this.userService.create(body.email, body.password);
   }
 
   @Get('')

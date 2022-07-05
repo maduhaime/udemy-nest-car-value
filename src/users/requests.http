@@ -1,23 +1,23 @@
 ### Create a new user
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/users
 content-type: application/json
 
 {
-    "email": "test@exemple.com",
+    "email": "test05@exemple.com",
     "password": "password123!"
 }
 
 
 ### Find all users with a given email
-GET http://localhost:3000/auth?email=test@exemple.com
+GET http://localhost:3000/users?email=test@exemple.com
 
 
 ### Find a user with a given id
-GET http://localhost:3000/auth/1
+GET http://localhost:3000/users/3
 
 
 ### Update a user
-PATCH http://localhost:3000/auth/1
+PATCH http://localhost:3000/users/1
 content-type: application/json
 
 {
@@ -25,4 +25,4 @@ content-type: application/json
 }
 
 ### Delete a user with a given id
-DELETE http://localhost:3000/auth/1
+DELETE http://localhost:3000/users/1
