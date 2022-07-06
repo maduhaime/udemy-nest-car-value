@@ -5,6 +5,9 @@ import { UserDto } from '../users/dtos/user.dto';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dtos/create-user.dto';
 
+import { User } from 'src/users/user.entity';
+import { CurrentUser } from '../decorators/current-user.decorator';
+
 @Controller('auth')
 @Serialize(UserDto)
 export class AuthController {
@@ -30,7 +33,7 @@ export class AuthController {
   }
 
   @Get('/whoami')
-  async whoAmI(@Session() session: any) {
-    return this.authService.whoAmI(session.userId);
+  async whoAmI(@CurrentUser() user: User) {
+    return user;
   }
 }
