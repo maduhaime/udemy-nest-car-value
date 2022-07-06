@@ -2,7 +2,6 @@ import { NestInterceptor, ExecutionContext, CallHandler, Injectable } from '@nes
 
 import { UsersService } from '../users/users.service';
 
-// Interceptor
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
   constructor(private usersService: UsersService) {}
